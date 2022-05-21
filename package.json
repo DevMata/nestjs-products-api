@@ -1,8 +1,9 @@
 {
-  "name": "little-api",
-  "version": "1.5.1",
-  "description": "Simple APi",
-  "author": "Antonio Mata <hildeamp@gmail.com>",
+  "name": "nestjs-products-api",
+  "packageManager": "yarn@3.2.1",
+  "version": "2.0.0",
+  "description": "NestJS Products API",
+  "author": "Antonio Mata <antonio.mata.sv@gmail.com>",
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
@@ -83,5 +84,8 @@
     },
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
+  },
+  "volta": {
+    "node": "16.15.0"
   }
 }
