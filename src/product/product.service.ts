@@ -29,10 +29,9 @@ export class ProductService {
 
   async findAll(pagination: PaginationDto): Promise<Products> {
     const { take, skip } = getOrmTakeAndSkip(pagination);
-    const [
-      products,
-      totalProducts,
-    ] = await this.productRepository.findAndCount({ take, skip });
+    const [products, totalProducts] = await this.productRepository.findAndCount(
+      { take, skip },
+    );
 
     const productsResponse = {
       products,
@@ -44,7 +43,9 @@ export class ProductService {
   }
 
   async findOne(productId: number): Promise<ProductDoc> {
-    const product = await this.productRepository.findOne(productId);
+    const product = await this.productRepository.findOne({
+      where: { id: productId },
+    });
     if (!product) {
       throw new NotFoundException('product not found');
     }
@@ -58,7 +59,9 @@ export class ProductService {
     productId: number,
     updateProductDto: UpdateProductDto,
   ): Promise<ProductDoc> {
-    const product = await this.productRepository.findOne(productId);
+    const product = await this.productRepository.findOne({
+      where: { id: productId },
+    });
     if (!product) {
       throw new NotFoundException('product not found');
     }
